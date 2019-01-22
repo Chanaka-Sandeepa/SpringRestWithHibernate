@@ -2,15 +2,14 @@ package com.journaldev.spring.service;
 
 import java.util.List;
 
-import com.journaldev.spring.dao.PersonDAO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.journaldev.spring.dao.HotelDAO;
 import com.journaldev.spring.model.Hotel;
 
-
-public class HotelServiceImpl implements HotelService{
+@Service
+public class HotelServiceImpl implements HotelService {
 
     private HotelDAO hotelDAO;
 
@@ -47,4 +46,5 @@ public class HotelServiceImpl implements HotelService{
     public void removeHotel(int id) {
         this.hotelDAO.removeHotel(id);
     }
+
 }

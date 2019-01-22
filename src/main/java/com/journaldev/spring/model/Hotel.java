@@ -22,12 +22,16 @@ public class Hotel {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
+    @Column(name="NAME")
     private String name;
 
+    @Column(name="ADDRESS")
     private String address;
 
+    @Column(name="CITY")
     private String city;
 
+    @Column(name="COUNTRY")
     private String country;
 
     public String getAddress() {

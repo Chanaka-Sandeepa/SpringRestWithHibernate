@@ -65,6 +65,7 @@
 	<beans:bean id="hotelService" class="com.journaldev.spring.service.HotelServiceImpl">
 		<beans:property name="hotelDAO" ref="hotelDAO"></beans:property>
 	</beans:bean>
+
 	<context:component-scan base-package="com.journaldev.spring" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
