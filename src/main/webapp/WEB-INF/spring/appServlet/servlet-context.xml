@@ -50,7 +50,9 @@
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
 			</beans:props>
 		</beans:property>
+		<beans:property name="packagesToScan" value="com.journaldev.spring.model"/>
 	</beans:bean>
+
 	
 	<beans:bean id="personDAO" class="com.journaldev.spring.dao.PersonDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
@@ -66,8 +68,9 @@
 		<beans:property name="hotelDAO" ref="hotelDAO"></beans:property>
 	</beans:bean>
 
+
 	<context:component-scan base-package="com.journaldev.spring" />
-	
+
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
 	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
