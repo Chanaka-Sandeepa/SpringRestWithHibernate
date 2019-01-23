@@ -40,7 +40,8 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
-				<beans:value>com.chanaka.springMVC.model.Person</beans:value>
+				<beans:value>com.chanaka.springMVC.model.Hotel</beans:value>
+				<beans:value>com.chanaka.springMVC.model.Contract</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -51,21 +52,29 @@
 			</beans:props>
 		</beans:property>
 		<beans:property name="packagesToScan" value="com.chanaka.springMVC.model"/>
+
 	</beans:bean>
 
-	
-	<beans:bean id="personDAO" class="com.chanaka.springMVC.dao.PersonDAOImpl">
-		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</beans:bean>
-	<beans:bean id="personService" class="com.chanaka.springMVC.service.PersonServiceImpl">
-		<beans:property name="personDAO" ref="personDAO"></beans:property>
-	</beans:bean>
+
+	<!--<beans:bean id="personDAO" class="com.chanaka.springMVC.dao.PersonDAOImpl">-->
+		<!--<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />-->
+	<!--</beans:bean>-->
+	<!--<beans:bean id="personService" class="com.chanaka.springMVC.service.PersonServiceImpl">-->
+		<!--<beans:property name="personDAO" ref="personDAO"></beans:property>-->
+	<!--</beans:bean>-->
 
 	<beans:bean id="hotelDAO" class="com.chanaka.springMVC.dao.HotelDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
 	<beans:bean id="hotelService" class="com.chanaka.springMVC.service.HotelServiceImpl">
 		<beans:property name="hotelDAO" ref="hotelDAO"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="contractDAO" class="com.chanaka.springMVC.dao.ContractDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="contractService" class="com.chanaka.springMVC.service.ContractServiceImpl">
+		<beans:property name="contractDAO" ref="contractDAO"></beans:property>
 	</beans:bean>
 
 

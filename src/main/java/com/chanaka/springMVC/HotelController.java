@@ -40,7 +40,7 @@ public class HotelController {
         return this.hotelService.listHotels();
     }
 
-    @RequestMapping("/remove/{id}")
+    @RequestMapping("hotel/remove/{id}")
     public List<Hotel> removeHotel(@PathVariable("id") int id){
 
         this.hotelService.removeHotel(id);

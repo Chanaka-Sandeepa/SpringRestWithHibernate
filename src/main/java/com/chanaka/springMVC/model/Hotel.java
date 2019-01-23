@@ -1,6 +1,7 @@
 package com.chanaka.springMVC.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Entity bean with JPA annotations
@@ -29,6 +30,30 @@ public class Hotel {
 
     @Column(name="COUNTRY")
     private String country;
+
+    public List<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(List<Contract> contracts) {
+        this.contracts = contracts;
+    }
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="CONTRACT_ID")
+    private List<Contract> contracts;
+
+    public List<RoomType> getRoom_types() {
+        return room_types;
+    }
+
+    public void setRoom_types(List<RoomType> room_types) {
+        this.room_types = room_types;
+    }
+
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="ROOM_TYPE_ID")
+    private List<RoomType> room_types;
 
     public String getAddress() {
         return address;
