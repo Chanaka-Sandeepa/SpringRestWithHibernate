@@ -1,4 +1,4 @@
-package com.journaldev.spring;
+package com.chanaka.springMVC;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.journaldev.spring.model.Person;
-import com.journaldev.spring.service.PersonService;
+import com.chanaka.springMVC.model.Person;
+import com.chanaka.springMVC.service.PersonService;
 
 @Controller
 public class PersonController {

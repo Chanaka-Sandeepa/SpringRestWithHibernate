@@ -1,8 +1,8 @@
-package com.journaldev.spring.dao;
+package com.chanaka.springMVC.dao;
 
 import java.util.List;
 
-import com.journaldev.spring.model.Hotel;
+import com.chanaka.springMVC.model.Hotel;
 
 public interface HotelDAO {
 

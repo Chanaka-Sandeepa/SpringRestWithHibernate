@@ -1,8 +1,8 @@
-package com.journaldev.spring.service;
+package com.chanaka.springMVC.service;
 
 import java.util.List;
 
-import com.journaldev.spring.model.Hotel;
+import com.chanaka.springMVC.model.Hotel;
 
 public interface HotelService {
 

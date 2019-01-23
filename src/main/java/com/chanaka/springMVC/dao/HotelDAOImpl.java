@@ -1,15 +1,14 @@
-package com.journaldev.spring.dao;
+package com.chanaka.springMVC.dao;
 
 import java.util.List;
 
-import com.journaldev.spring.model.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import com.journaldev.spring.model.Hotel;
+import com.chanaka.springMVC.model.Hotel;
 
 @Repository
 public class HotelDAOImpl implements HotelDAO {

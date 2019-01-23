@@ -40,7 +40,7 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="annotatedClasses">
 			<beans:list>
-				<beans:value>com.journaldev.spring.model.Person</beans:value>
+				<beans:value>com.chanaka.springMVC.model.Person</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -50,26 +50,26 @@
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
 			</beans:props>
 		</beans:property>
-		<beans:property name="packagesToScan" value="com.journaldev.spring.model"/>
+		<beans:property name="packagesToScan" value="com.chanaka.springMVC.model"/>
 	</beans:bean>
 
 	
-	<beans:bean id="personDAO" class="com.journaldev.spring.dao.PersonDAOImpl">
+	<beans:bean id="personDAO" class="com.chanaka.springMVC.dao.PersonDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="personService" class="com.journaldev.spring.service.PersonServiceImpl">
+	<beans:bean id="personService" class="com.chanaka.springMVC.service.PersonServiceImpl">
 		<beans:property name="personDAO" ref="personDAO"></beans:property>
 	</beans:bean>
 
-	<beans:bean id="hotelDAO" class="com.journaldev.spring.dao.HotelDAOImpl">
+	<beans:bean id="hotelDAO" class="com.chanaka.springMVC.dao.HotelDAOImpl">
 		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="hotelService" class="com.journaldev.spring.service.HotelServiceImpl">
+	<beans:bean id="hotelService" class="com.chanaka.springMVC.service.HotelServiceImpl">
 		<beans:property name="hotelDAO" ref="hotelDAO"></beans:property>
 	</beans:bean>
 
 
-	<context:component-scan base-package="com.journaldev.spring" />
+	<context:component-scan base-package="com.chanaka.springMVC" />
 
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
