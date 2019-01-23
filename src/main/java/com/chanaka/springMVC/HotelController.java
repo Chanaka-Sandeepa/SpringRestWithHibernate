@@ -32,17 +32,18 @@ public class HotelController {
 
     //For add and update hotel both
     @RequestMapping(value= "/hotel/add", method = RequestMethod.POST)
-    public String addHotel(@ModelAttribute("hotel") Hotel h){
+    public List<Hotel> addHotel(@ModelAttribute("hotel") Hotel h, @RequestParam("name") String name,
+                           @RequestParam("address") String address, @RequestParam("city") String City,@RequestParam("country") String Country){
 
-        if(h.getId() == 0){
-            //new hotel, add it
-            this.hotelService.addHotel(h);
-        }else{
-            //existing hotel, call update
-            this.hotelService.updateHotel(h);
-        }
-
-        return "redirect:/hotels";
+//        if(h.getId() == 0){
+//            //new hotel, add it
+//            this.hotelService.addHotel(h);
+//        }else{
+//            //existing hotel, call update
+//            this.hotelService.updateHotel(h);
+//        }
+        this.hotelService.addHotel(h);
+        return this.hotelService.listHotels();
 
     }
 

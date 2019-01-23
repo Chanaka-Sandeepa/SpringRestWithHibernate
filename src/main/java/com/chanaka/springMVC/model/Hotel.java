@@ -1,11 +1,6 @@
 package com.chanaka.springMVC.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Entity bean with JPA annotations
@@ -18,8 +13,9 @@ import javax.persistence.Table;
 public class Hotel {
 
     @Id
-    @Column(name="HOTEL_ID")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "HOTEL_ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CW_HOTEL_SEQ")
+    @SequenceGenerator(name = "CW_HOTEL_SEQ", sequenceName = "CW_HOTEL_SEQ", allocationSize = 1, initialValue = 3)
     private int id;
 
     @Column(name="NAME")
