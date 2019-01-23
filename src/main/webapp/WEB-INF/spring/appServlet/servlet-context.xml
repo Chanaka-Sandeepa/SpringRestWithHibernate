@@ -42,6 +42,8 @@
 			<beans:list>
 				<beans:value>com.chanaka.springMVC.model.Hotel</beans:value>
 				<beans:value>com.chanaka.springMVC.model.Contract</beans:value>
+				<beans:value>com.chanaka.springMVC.model.RoomType</beans:value>
+				<beans:value>com.chanaka.springMVC.model.Room</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -75,6 +77,13 @@
 	</beans:bean>
 	<beans:bean id="contractService" class="com.chanaka.springMVC.service.ContractServiceImpl">
 		<beans:property name="contractDAO" ref="contractDAO"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="roomDAO" class="com.chanaka.springMVC.dao.RoomDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="roomService" class="com.chanaka.springMVC.service.RoomServiceImpl">
+		<beans:property name="roomDAO" ref="roomDAO"></beans:property>
 	</beans:bean>
 
 

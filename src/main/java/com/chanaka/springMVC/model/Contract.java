@@ -32,9 +32,6 @@ public class Contract {
     @Column(name="CURRENCY")
     private String currency;
 
-    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="CONTRACT_ID")
-    private List<Contract> contracts;
 
     public int getId() {
         return id;
