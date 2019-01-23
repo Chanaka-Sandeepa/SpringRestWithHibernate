@@ -4,15 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import com.chanaka.springMVC.model.Hotel;
 import com.chanaka.springMVC.service.HotelService;
 
-@Controller
+import java.util.List;
+
+@RestController
 public class HotelController {
 
     private HotelService hotelService;
@@ -23,11 +22,12 @@ public class HotelController {
         this.hotelService = hs;
     }
 
-    @RequestMapping(value = "/hotels", method = RequestMethod.GET)
-    public String listHotels(Model model) {
-        model.addAttribute("hotel", new Hotel());
-        model.addAttribute("listHotels", this.hotelService.listHotels());
-        return "hotel";
+    @RequestMapping(value = "/hotels", method = RequestMethod.GET, produces="application/json")
+    @ResponseBody
+    public List<Hotel> listHotels(Model model) {
+//        model.addAttribute("hotel", new Hotel());
+//        model.addAttribute("listHotels", this.hotelService.listHotels());
+        return this.hotelService.listHotels();
     }
 
     //For add and update hotel both
