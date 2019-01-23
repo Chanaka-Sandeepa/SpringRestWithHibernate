@@ -25,8 +25,6 @@ public class HotelController {
     @RequestMapping(value = "/hotels", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public List<Hotel> listHotels(Model model) {
-//        model.addAttribute("hotel", new Hotel());
-//        model.addAttribute("listHotels", this.hotelService.listHotels());
         return this.hotelService.listHotels();
     }
 
@@ -39,22 +37,21 @@ public class HotelController {
         }else {
             this.hotelService.addHotel(h);
         }
-
         return this.hotelService.listHotels();
     }
 
     @RequestMapping("/remove/{id}")
-    public String removeHotel(@PathVariable("id") int id){
+    public List<Hotel> removeHotel(@PathVariable("id") int id){
 
         this.hotelService.removeHotel(id);
-        return "redirect:/hotels";
+        return this.hotelService.listHotels();
     }
 
-    @RequestMapping("/edit/{id}")
-    public String editHotel(@PathVariable("id") int id, Model model){
-        model.addAttribute("hotel", this.hotelService.getHotelById(id));
-        model.addAttribute("listhotels", this.hotelService.listHotels());
-        return "hotel";
-    }
+//    @RequestMapping("/edit/{id}")
+//    public String editHotel(@PathVariable("id") int id, Model model){
+//        model.addAttribute("hotel", this.hotelService.getHotelById(id));
+//        model.addAttribute("listhotels", this.hotelService.listHotels());
+//        return "hotel";
+//    }
 
 }
