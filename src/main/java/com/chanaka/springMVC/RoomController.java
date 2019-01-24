@@ -54,9 +54,10 @@ public class RoomController {
 
     //For search rooms
     @RequestMapping(value= "/room/search", method = RequestMethod.POST)
-    public List<Room> addRoom(@ModelAttribute("room") Room r, @RequestParam(value = "checkIn", required = false) String checkIn, @RequestParam(value = "checkOut", required = false) String checkOut ){
+    public List<Room> addRoom(@ModelAttribute("room") Room r, @RequestParam(value = "checkIn", required = false) String checkIn, @RequestParam(value = "checkOut", required = false) String checkOut,
+                              @RequestParam(value = "noOfNights", required = false) String noOfNights){
         Date convertedStartDate = CommonUtils.convertStringToDate(checkIn);
-        Date convertedEndDate = CommonUtils.convertStringToDate(checkOut);
+        Date convertedEndDate = CommonUtils.calculateCheckoutDate(convertedStartDate, noOfNights);
         return this.roomService.searchRoom(convertedStartDate, convertedEndDate);
     }
 
