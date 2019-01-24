@@ -1,5 +1,6 @@
 package com.chanaka.springMVC;
 
+import com.chanaka.springMVC.Util.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -54,22 +55,9 @@ public class RoomController {
     //For search rooms
     @RequestMapping(value= "/room/search", method = RequestMethod.POST)
     public List<Room> addRoom(@ModelAttribute("room") Room r, @RequestParam(value = "checkIn", required = false) String checkIn, @RequestParam(value = "checkOut", required = false) String checkOut ){
-        DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-        try {
-            Date frmDate= df.parse(checkIn);
-            Date toDate=df.parse(checkOut);
-            return this.roomService.searchRoom(frmDate, toDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
+        Date convertedStartDate = CommonUtils.convertStringToDate(checkIn);
+        Date convertedEndDate = CommonUtils.convertStringToDate(checkOut);
+        return this.roomService.searchRoom(convertedStartDate, convertedEndDate);
     }
-
-//    @RequestMapping("/edit/{id}")
-//    public String editRoom(@PathVariable("id") int id, Model model){
-//        model.addAttribute("room", this.roomService.getRoomById(id));
-//        model.addAttribute("listrooms", this.roomService.listRooms());
-//        return "room";
-//    }
 
 }
