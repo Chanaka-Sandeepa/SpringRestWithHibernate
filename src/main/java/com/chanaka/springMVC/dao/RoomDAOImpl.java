@@ -1,6 +1,7 @@
 package com.chanaka.springMVC.dao;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.chanaka.springMVC.model.Room;
@@ -65,9 +66,10 @@ public class RoomDAOImpl implements RoomDAO{
     }
 
     @Override
-    public List<Room> searchRoom(String checkIn, String checkOut) {
+    public List<Room> searchRoom(Date checkIn, Date checkOut) {
         Session session = this.sessionFactory.getCurrentSession();
-        List<Room> roomList = session.createQuery("FROM Room AS r LEFT JOIN Contract as c ON r.contractID = c.id WHERE r.startDate AND r.endDate BETWEEN :stDate AND :edDate ")
+        List<Room> roomList = session.createQuery(
+                "FROM Room r WHERE r.contract.startDate <= :stDate AND r.contract.endDate >= :edDate")
                 .setParameter("stDate", checkIn)
                 .setParameter("edDate", checkOut)
                 .list();

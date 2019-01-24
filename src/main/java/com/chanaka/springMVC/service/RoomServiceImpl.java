@@ -1,5 +1,8 @@
 package com.chanaka.springMVC.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.chanaka.springMVC.dao.RoomDAO;
@@ -49,7 +52,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     @Transactional
-    public List<Room> searchRoom(String checkIn, String checkOut) {
+    public List<Room> searchRoom(Date checkIn, Date checkOut) {
         return this.roomDAO.searchRoom(checkIn, checkOut);
     }
 }

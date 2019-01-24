@@ -1,6 +1,7 @@
 package com.chanaka.springMVC.model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,10 +25,10 @@ public class Contract {
     private Hotel hotel;
 
     @Column(name="START_DATE")
-    private String startDate;
+    private Date startDate;
 
     @Column(name="END_DATE")
-    private String endDate;
+    private Date endDate;
 
     @Column(name="CURRENCY")
     private String currency;
@@ -49,19 +50,19 @@ public class Contract {
         this.hotel = hotel;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

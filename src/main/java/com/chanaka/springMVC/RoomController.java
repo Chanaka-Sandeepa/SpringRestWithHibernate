@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import com.chanaka.springMVC.model.Room;
 import com.chanaka.springMVC.service.RoomService;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -51,7 +54,15 @@ public class RoomController {
     //For search rooms
     @RequestMapping(value= "/room/search", method = RequestMethod.POST)
     public List<Room> addRoom(@ModelAttribute("room") Room r, @RequestParam(value = "checkIn", required = false) String checkIn, @RequestParam(value = "checkOut", required = false) String checkOut ){
-        return this.roomService.searchRoom(checkIn, checkOut);
+        DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        try {
+            Date frmDate= df.parse(checkIn);
+            Date toDate=df.parse(checkOut);
+            return this.roomService.searchRoom(frmDate, toDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 //    @RequestMapping("/edit/{id}")
