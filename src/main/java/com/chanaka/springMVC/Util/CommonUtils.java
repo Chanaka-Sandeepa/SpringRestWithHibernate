@@ -53,4 +53,8 @@ public class CommonUtils {
         return (price + price*MARKUP);
     }
 
+    public static String getCurrentDate(){
+        return new SimpleDateFormat("dd-MMM-yyyy").format(new Date());
+    }
+
 }

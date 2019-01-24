@@ -23,10 +23,10 @@ public class RoomDAOImpl implements RoomDAO{
     }
 
     @Override
-    public void addRoom(Room h) {
+    public void addRoom(Room r) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(h);
-        logger.info("Room saved successfully, Room Details="+h);
+        session.persist(r);
+        logger.info("Room saved successfully, Room Details="+r);
     }
 
     @Override
@@ -41,8 +41,8 @@ public class RoomDAOImpl implements RoomDAO{
     public List<Room> listRooms() {
         Session session = this.sessionFactory.getCurrentSession();
         List<Room> roomList = session.createQuery("from Room").list();
-        for(Room h : roomList){
-            logger.info("Room List::"+h);
+        for(Room r : roomList){
+            logger.info("Room List::"+r);
         }
         return roomList;
     }
@@ -50,19 +50,19 @@ public class RoomDAOImpl implements RoomDAO{
     @Override
     public Room getRoomById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Room p = (Room) session.load(Room.class, new Integer(id));
-        logger.info("Room loaded successfully, Room details="+p);
-        return p;
+        Room r = (Room) session.load(Room.class, new Integer(id));
+        logger.info("Room loaded successfully, Room details="+r);
+        return r;
     }
 
     @Override
     public void removeRoom(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Room p = (Room) session.load(Room.class, new Integer(id));
-        if(null != p){
-            session.delete(p);
+        Room r = (Room) session.load(Room.class, new Integer(id));
+        if(null != r){
+            session.delete(r);
         }
-        logger.info("Room deleted successfully, room details="+p);
+        logger.info("Room deleted successfully, room details="+r);
     }
 
     @Override
