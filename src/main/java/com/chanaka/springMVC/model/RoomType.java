@@ -28,10 +28,6 @@ public class RoomType {
     @Column(name="DESCRIPTION")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "HOTEL_ID", nullable = false, foreignKey = @ForeignKey(name="CW_ROOM_TYPE_HOTEL_FK"))
-    private Hotel hotel;
-
     public int getId() {
         return id;
     }
@@ -62,14 +58,6 @@ public class RoomType {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Hotel getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
     }
 
 //    @Override

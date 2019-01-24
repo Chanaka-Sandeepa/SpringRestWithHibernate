@@ -47,4 +47,9 @@ public class RoomServiceImpl implements RoomService {
         this.roomDAO.removeRoom(id);
     }
 
+    @Override
+    @Transactional
+    public List<Room> searchRoom(String checkIn, String checkOut) {
+        return this.roomDAO.searchRoom(checkIn, checkOut);
+    }
 }

@@ -11,5 +11,6 @@ public interface RoomService {
     public List<Room> listRooms();
     public Room getRoomById(int id);
     public void removeRoom(int id);
+    public List<Room> searchRoom(String checkIn, String checkOut);
 
 }

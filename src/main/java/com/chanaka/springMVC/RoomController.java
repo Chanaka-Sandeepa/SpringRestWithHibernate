@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.chanaka.springMVC.model.Room;
 import com.chanaka.springMVC.service.RoomService;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @RestController
@@ -45,6 +46,12 @@ public class RoomController {
 
         this.roomService.removeRoom(id);
         return this.roomService.listRooms();
+    }
+
+    //For search rooms
+    @RequestMapping(value= "/room/search", method = RequestMethod.POST)
+    public List<Room> addRoom(@ModelAttribute("room") Room r, @RequestParam(value = "checkIn", required = false) String checkIn, @RequestParam(value = "checkOut", required = false) String checkOut ){
+        return this.roomService.searchRoom(checkIn, checkOut);
     }
 
 //    @RequestMapping("/edit/{id}")
