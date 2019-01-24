@@ -3,6 +3,7 @@ package com.chanaka.springMVC.service;
 import java.util.Date;
 import java.util.List;
 
+import com.chanaka.springMVC.model.ResultRoomObject;
 import com.chanaka.springMVC.model.Room;
 
 public interface RoomService {
@@ -12,6 +13,6 @@ public interface RoomService {
     public List<Room> listRooms();
     public Room getRoomById(int id);
     public void removeRoom(int id);
-    public List<Room> searchRoom(Date checkIn, Date checkOut, int roomsReq, int noOfAdults);
+    public List<ResultRoomObject> searchRoom(Date checkIn, Date checkOut, int roomsReq, int noOfAdults);
 
 }

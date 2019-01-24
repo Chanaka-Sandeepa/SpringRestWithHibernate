@@ -30,7 +30,7 @@ public class Room {
     private int noOfRooms;
 
     @Column(name="PRICE")
-    private String price;
+    private double price;
 
     public RoomID getRoomID() {
         return roomID;
@@ -64,12 +64,14 @@ public class Room {
         this.noOfRooms = noOfRooms;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
+
+
 
 }

@@ -1,6 +1,7 @@
 package com.chanaka.springMVC;
 
 import com.chanaka.springMVC.Util.CommonUtils;
+import com.chanaka.springMVC.model.ResultRoomObject;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -76,7 +77,7 @@ public class RoomController {
 //    }
 
     @RequestMapping(value= "/room/search", method = RequestMethod.POST)
-    public List<Room> searchRoom(@RequestBody ObjectNode request)
+    public List<ResultRoomObject> searchRoom(@RequestBody ObjectNode request)
     {
         String checkIn = request.get("checkIn").asText();
         String noOfNights = request.get("noOfNights").asText();
@@ -86,7 +87,6 @@ public class RoomController {
         Date convertedStartDate = CommonUtils.convertStringToDate(checkIn);
         Date convertedEndDate = CommonUtils.calculateCheckoutDate(convertedStartDate, noOfNights);
         return this.roomService.searchRoom(convertedStartDate, convertedEndDate, Integer.parseInt(roomsReq), Integer.parseInt(noOfAdults));
-
     }
 
 }

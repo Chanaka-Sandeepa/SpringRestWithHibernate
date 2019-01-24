@@ -5,7 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import com.chanaka.springMVC.Util.CommonUtils;
 import com.chanaka.springMVC.dao.RoomDAO;
+import com.chanaka.springMVC.model.ResultRoomObject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,7 +54,9 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     @Transactional
-    public List<Room> searchRoom(Date checkIn, Date checkOut, int roomsReq, int noOfAdults) {
-        return this.roomDAO.searchRoom(checkIn, checkOut, roomsReq, noOfAdults);
+    public List<ResultRoomObject> searchRoom(Date checkIn, Date checkOut, int roomsReq, int noOfAdults) {
+        List<Room> resultRooms = this.roomDAO.searchRoom(checkIn, checkOut, roomsReq, noOfAdults);
+        List<ResultRoomObject> resultRoomObjects = CommonUtils.formatToResultObjects(resultRooms);
+        return resultRoomObjects;
     }
 }
