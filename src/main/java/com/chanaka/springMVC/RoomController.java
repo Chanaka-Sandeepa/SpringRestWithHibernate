@@ -1,6 +1,7 @@
 package com.chanaka.springMVC;
 
 import com.chanaka.springMVC.Util.CommonUtils;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -35,8 +36,13 @@ public class RoomController {
 
     //For add and update room both
     @RequestMapping(value= "/room/add", method = RequestMethod.POST)
-    public List<Room> addRoom(@ModelAttribute("room") Room h, @RequestParam(value = "id", required = false) String id, @RequestParam("name") String name,
-                                @RequestParam("address") String address, @RequestParam("city") String City,@RequestParam("country") String Country){
+    public List<Room> addRoom(@ModelAttribute("room") Room h,
+                              @RequestParam(value = "id", required = false) String id,
+                              @RequestParam("name") String name,
+                              @RequestParam("address") String address,
+                              @RequestParam("city") String City,
+                              @RequestParam("country") String Country)
+    {
         if (id != null){
             this.roomService.updateRoom(h);
         }else {
@@ -53,17 +59,34 @@ public class RoomController {
     }
 
     //For search rooms
+//    @RequestMapping(value= "/room/search", method = RequestMethod.POST)
+//    public List<Room> searchRoom(@ModelAttribute("room") Room r, @RequestParam(value = "checkIn", required = false) String checkIn,
+//                                  @RequestParam(value = "checkOut", required = false) String checkOut,
+//                                  @RequestParam(value = "noOfNights", required = false) String noOfNights,
+//                                  @RequestParam(value = "roomsReq", required = false) String roomsReq,
+//                                  @RequestParam(value = "noOfAdults", required = false) String noOfAdults)
+//    {
+//
+//        Date convertedStartDate = CommonUtils.convertStringToDate(checkIn);
+//        Date convertedEndDate = CommonUtils.calculateCheckoutDate(convertedStartDate, noOfNights);
+//        roomsReq = (roomsReq == null) ? "0" : roomsReq;
+//        noOfAdults = (noOfAdults == null) ? "0" : noOfAdults;
+//        return this.roomService.searchRoom(convertedStartDate, convertedEndDate, Integer.parseInt(roomsReq), Integer.parseInt(noOfAdults));
+//
+//    }
+
     @RequestMapping(value= "/room/search", method = RequestMethod.POST)
-    public List<Room> searchRoom(@ModelAttribute("room") Room r, @RequestParam(value = "checkIn", required = false) String checkIn,
-                              @RequestParam(value = "checkOut", required = false) String checkOut,
-                              @RequestParam(value = "noOfNights", required = false) String noOfNights,
-                              @RequestParam(value = "roomsReq", required = false) String roomsReq,
-                              @RequestParam(value = "noOfAdults", required = false) String noOfAdults){
+    public List<Room> searchRoom(@RequestBody ObjectNode request)
+    {
+        String checkIn = request.get("checkIn").asText();
+        String noOfNights = request.get("noOfNights").asText();
+        String roomsReq = (request.has("roomsReq")) ? request.get("roomsReq").asText() : "0";
+        String noOfAdults = (request.has("noOfAdults")) ? request.get("noOfAdults").asText() : "0";
+
         Date convertedStartDate = CommonUtils.convertStringToDate(checkIn);
         Date convertedEndDate = CommonUtils.calculateCheckoutDate(convertedStartDate, noOfNights);
-        roomsReq = (roomsReq == null) ? "0" : roomsReq;
-        noOfAdults = (noOfAdults == null) ? "0" : noOfAdults;
         return this.roomService.searchRoom(convertedStartDate, convertedEndDate, Integer.parseInt(roomsReq), Integer.parseInt(noOfAdults));
+
     }
 
 }
