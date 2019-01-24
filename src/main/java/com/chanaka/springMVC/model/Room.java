@@ -27,7 +27,7 @@ public class Room {
     private RoomType roomType;
 
     @Column(name="NO_OF_ROOMS")
-    private String noOfRooms;
+    private int noOfRooms;
 
     @Column(name="PRICE")
     private String price;
@@ -56,11 +56,11 @@ public class Room {
         this.roomType = roomType;
     }
 
-    public String getNoOfRooms() {
+    public int getNoOfRooms() {
         return noOfRooms;
     }
 
-    public void setNoOfRooms(String noOfRooms) {
+    public void setNoOfRooms(int noOfRooms) {
         this.noOfRooms = noOfRooms;
     }
 

@@ -12,6 +12,6 @@ public interface RoomService {
     public List<Room> listRooms();
     public Room getRoomById(int id);
     public void removeRoom(int id);
-    public List<Room> searchRoom(Date checkIn, Date checkOut);
+    public List<Room> searchRoom(Date checkIn, Date checkOut, int roomsReq, int noOfAdults);
 
 }

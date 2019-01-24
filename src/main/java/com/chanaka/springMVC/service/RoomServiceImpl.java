@@ -52,7 +52,7 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     @Transactional
-    public List<Room> searchRoom(Date checkIn, Date checkOut) {
-        return this.roomDAO.searchRoom(checkIn, checkOut);
+    public List<Room> searchRoom(Date checkIn, Date checkOut, int roomsReq, int noOfAdults) {
+        return this.roomDAO.searchRoom(checkIn, checkOut, roomsReq, noOfAdults);
     }
 }

@@ -54,11 +54,16 @@ public class RoomController {
 
     //For search rooms
     @RequestMapping(value= "/room/search", method = RequestMethod.POST)
-    public List<Room> addRoom(@ModelAttribute("room") Room r, @RequestParam(value = "checkIn", required = false) String checkIn, @RequestParam(value = "checkOut", required = false) String checkOut,
-                              @RequestParam(value = "noOfNights", required = false) String noOfNights){
+    public List<Room> searchRoom(@ModelAttribute("room") Room r, @RequestParam(value = "checkIn", required = false) String checkIn,
+                              @RequestParam(value = "checkOut", required = false) String checkOut,
+                              @RequestParam(value = "noOfNights", required = false) String noOfNights,
+                              @RequestParam(value = "roomsReq", required = false) String roomsReq,
+                              @RequestParam(value = "noOfAdults", required = false) String noOfAdults){
         Date convertedStartDate = CommonUtils.convertStringToDate(checkIn);
         Date convertedEndDate = CommonUtils.calculateCheckoutDate(convertedStartDate, noOfNights);
-        return this.roomService.searchRoom(convertedStartDate, convertedEndDate);
+        roomsReq = (roomsReq == null) ? "0" : roomsReq;
+        noOfAdults = (noOfAdults == null) ? "0" : noOfAdults;
+        return this.roomService.searchRoom(convertedStartDate, convertedEndDate, Integer.parseInt(roomsReq), Integer.parseInt(noOfAdults));
     }
 
 }

@@ -1,7 +1,6 @@
 package com.chanaka.springMVC.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Entity bean with JPA annotations
@@ -23,7 +22,7 @@ public class RoomType {
     private String name;
 
     @Column(name="MAX_ADULTS")
-    private int max_adults;
+    private int maxAdults;
 
     @Column(name="DESCRIPTION")
     private String description;
@@ -44,12 +43,12 @@ public class RoomType {
         this.name = name;
     }
 
-    public int getMax_adults() {
-        return max_adults;
+    public int getMaxAdults() {
+        return maxAdults;
     }
 
-    public void setMax_adults(int max_adults) {
-        this.max_adults = max_adults;
+    public void setMaxAdults(int maxAdults) {
+        this.maxAdults = maxAdults;
     }
 
     public String getDescription() {

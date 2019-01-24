@@ -66,12 +66,18 @@ public class RoomDAOImpl implements RoomDAO{
     }
 
     @Override
-    public List<Room> searchRoom(Date checkIn, Date checkOut) {
+    public List<Room> searchRoom(Date checkIn, Date checkOut, int roomsReq, int noOfAdults) {
         Session session = this.sessionFactory.getCurrentSession();
         List<Room> roomList = session.createQuery(
-                "FROM Room r WHERE r.contract.startDate <= :stDate AND r.contract.endDate >= :edDate")
+                "FROM Room r WHERE " +
+                        "r.contract.startDate <= :stDate AND " +
+                        "r.contract.endDate >= :edDate AND " +
+                        "r.noOfRooms >= :roomsReq AND " +
+                        "r.roomType.maxAdults >= :noOfAdults")
                 .setParameter("stDate", checkIn)
                 .setParameter("edDate", checkOut)
+                .setParameter("roomsReq", roomsReq)
+                .setParameter("noOfAdults", noOfAdults)
                 .list();
         for(Room h : roomList){
             logger.info("Room List::"+h);
